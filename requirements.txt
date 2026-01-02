@@ -2,3 +2,8 @@ streamlit
 pandas
 altair
 databricks-sql-connector
+opencv-python-headless
+numpy
+pyzbar
+streamlit-webrtc
+av
