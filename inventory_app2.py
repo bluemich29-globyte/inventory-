@@ -590,6 +590,7 @@ def parse_barcode_payload(barcode_text: str) -> dict:
     - "123" (plain product ID)
     - "id=123"
     - JSON: {"id":123,"name":"...","price":12.3,"description":"..."}
+    - Colon format: "13: Wood Plank : Oak wood plank 2x4 : 10 Price: 25.50"
     Returns dict: {id, name, description, price}
     """
     out = {"id": None, "name": "", "description": "", "price": None}
@@ -608,6 +609,35 @@ def parse_barcode_payload(barcode_text: str) -> dict:
             return out
     except Exception:
         pass
+
+    # Colon-separated format: "ID: Name : Description : Qty Price: XX.XX"
+    # Example: "13: Wood Plank : Oak wood plank 2x4 : 10 Price: 25.50"
+    if ":" in barcode_text and "price:" in barcode_text.lower():
+        try:
+            parts = barcode_text.split(":")
+            if len(parts) >= 4:
+                # Extract ID (first part before first colon)
+                out["id"] = int(parts[0].strip())
+
+                # Extract name (second part)
+                out["name"] = parts[1].strip()
+
+                # Extract description and price from remaining parts
+                # Join all parts after name, then split by "Price:"
+                rest = ":".join(parts[2:])
+                if "price:" in rest.lower():
+                    desc_price = rest.lower().split("price:")
+                    # Description is everything before "Price:"
+                    desc_parts = rest[:rest.lower().find("price:")].strip().split(":")
+                    out["description"] = desc_parts[0].strip()
+
+                    # Price is after "Price:"
+                    price_str = rest[rest.lower().find("price:") + 6:].strip()
+                    out["price"] = float(price_str)
+
+                return out
+        except Exception:
+            pass
 
     # id=123
     low = barcode_text.strip().lower()
