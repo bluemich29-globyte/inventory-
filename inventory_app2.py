@@ -421,28 +421,30 @@ st.markdown(
         display: flex;
         align-items: center;
         gap: 14px;
-        padding: 18px 24px;
-        background: linear-gradient(90deg, #3f2a1d, #5c3d2e);
-        border-radius: 14px;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        padding: 20px 28px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 16px;
+        margin-bottom: 28px;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
     }
-    .brand-logo { font-size: 38px; }
+    .brand-logo { font-size: 42px; }
     .brand-title {
-        font-size: 34px;
+        font-size: 36px;
         font-weight: 800;
-        color: #fef3c7;
+        color: #ffffff;
         letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     .brand-subtitle {
-        font-size: 14px;
-        color: #fde68a;
-        margin-top: -6px;
+        font-size: 15px;
+        color: #e0e7ff;
+        margin-top: -4px;
+        font-weight: 500;
     }
     </style>
 
     <div class="brand-header">
-        <div class="brand-logo">🪵</div>
+        <div class="brand-logo">📦</div>
         <div>
             <div class="brand-title">EthioWoods</div>
             <div class="brand-subtitle">Inventory & Sales Management</div>
@@ -458,56 +460,147 @@ st.markdown(
 st.markdown(
     """
     <style>
-    .stApp { background-color: #ff8d00; color: #e5e7eb; }
-    h1, h2, h3, h4 { color: #38bdf8; }
-
-    section[data-testid="stSidebar"] {
-        background-color: #020617;
-        border-right: 1px solid #1e293b;
+    /* Main background - light gradient */
+    .stApp {
+        background: linear-gradient(to bottom, #f0f9ff 0%, #e0f2fe 100%);
+        color: #1e293b;
     }
 
+    /* Headers - vibrant purple */
+    h1, h2, h3, h4 {
+        color: #7c3aed !important;
+        font-weight: 700;
+    }
+
+    /* Sidebar - clean white with shadow */
+    section[data-testid="stSidebar"] {
+        background-color: #ffffff;
+        border-right: 2px solid #e0e7ff;
+        box-shadow: 2px 0 8px rgba(124, 58, 237, 0.1);
+    }
+
+    /* Tabs - bright and modern */
     button[data-baseweb="tab"] {
-        background-color: #020617;
-        color: #cbd5e1;
-        border-radius: 6px;
-        padding: 8px 14px;
-        margin-right: 6px;
+        background-color: #f1f5f9;
+        color: #64748b;
+        border-radius: 10px;
+        padding: 10px 16px;
+        margin-right: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #2563eb;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         font-weight: 600;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
     }
 
+    button[data-baseweb="tab"]:hover {
+        background-color: #e2e8f0;
+        transform: translateY(-2px);
+    }
+
+    /* Table headers - vibrant gradient */
     thead tr th {
-        background-color: #1e293b !important;
-        color: #f8fafc !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: #ffffff !important;
         font-weight: 600;
         text-align: left;
+        padding: 12px !important;
     }
 
-    tbody tr:nth-child(even) { background-color: #020617; }
-    tbody tr:nth-child(odd)  { background-color: #020617; }
-    tbody tr:hover { background-color: #1e293b !important; }
+    /* Table rows - clean alternating */
+    tbody tr:nth-child(even) { background-color: #ffffff; }
+    tbody tr:nth-child(odd)  { background-color: #f8fafc; }
+    tbody tr:hover {
+        background-color: #ddd6fe !important;
+        transform: scale(1.01);
+        transition: all 0.2s ease;
+    }
 
+    /* Metric cards - colorful gradients */
     div[data-testid="metric-container"] {
-        background-color: #020617;
-        border: 1px solid #1e293b;
-        border-radius: 10px;
-        padding: 12px;
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border: 2px solid #fbbf24;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
     }
 
+    div[data-testid="metric-container"] label {
+        color: #92400e !important;
+        font-weight: 600;
+    }
+
+    div[data-testid="metric-container"] [data-testid="stMetricValue"] {
+        color: #78350f !important;
+        font-weight: 700;
+    }
+
+    /* Primary buttons - vibrant purple */
     button[kind="primary"] {
-        background-color: #2563eb !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         color: white !important;
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 10px 20px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    button[kind="primary"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Secondary buttons - bright colors */
+    button[kind="secondary"] {
+        background-color: #10b981 !important;
+        color: white !important;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    /* Input fields - clean white */
+    input, textarea, select {
+        background-color: #ffffff !important;
+        color: #1e293b !important;
+        border: 2px solid #e0e7ff !important;
+        border-radius: 8px !important;
+        padding: 8px !important;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #667eea !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    }
+
+    /* Success messages - bright green */
+    .element-container div[data-testid="stMarkdownContainer"] p {
         border-radius: 8px;
     }
 
-    input, textarea {
-        background-color: #020617 !important;
-        color: #f8fafc !important;
-        border: 1px solid #1e293b !important;
+    /* Info boxes - bright blue */
+    div[data-testid="stAlert"] {
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+
+    /* Expanders - clean style */
+    div[data-testid="stExpander"] {
+        background-color: #ffffff;
+        border: 2px solid #e0e7ff;
+        border-radius: 10px;
+    }
+
+    /* Dataframe styling */
+    div[data-testid="stDataFrame"] {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     </style>
     """,
@@ -591,6 +684,7 @@ def parse_barcode_payload(barcode_text: str) -> dict:
     - "id=123"
     - JSON: {"id":123,"name":"...","price":12.3,"description":"..."}
     - Colon format: "13: Wood Plank : Oak wood plank 2x4 : 10 Price: 25.50"
+    - Name $Price: "Injera $6" (generates auto ID from name hash)
     Returns dict: {id, name, description, price}
     """
     out = {"id": None, "name": "", "description": "", "price": None}
@@ -634,6 +728,26 @@ def parse_barcode_payload(barcode_text: str) -> dict:
                     # Price is after "Price:"
                     price_str = rest[rest.lower().find("price:") + 6:].strip()
                     out["price"] = float(price_str)
+
+                return out
+        except Exception:
+            pass
+
+    # "Name $Price" format (e.g., "Injera $6")
+    if "$" in barcode_text:
+        try:
+            parts = barcode_text.split("$")
+            if len(parts) == 2:
+                name_part = parts[0].strip()
+                price_part = parts[1].strip()
+
+                # Extract name and price
+                out["name"] = name_part
+                out["price"] = float(price_part)
+
+                # Generate a hash-based ID from the name (consistent ID for same product)
+                out["id"] = abs(hash(name_part.lower())) % 100000
+                out["description"] = ""  # Empty description, will prompt user or use default
 
                 return out
         except Exception:
