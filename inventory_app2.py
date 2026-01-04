@@ -401,9 +401,19 @@ from pyzbar.pyzbar import decode
 # ============================================================
 # HARD-CODED DATABRICKS CONFIG (EDIT THESE 3 VALUES)
 # ============================================================
-DATABRICKS_SERVER_HOSTNAME = "dbc-092f61e4-3cd9.cloud.databricks.com"
-DATABRICKS_HTTP_PATH = "/sql/1.0/warehouses/343faa8c987d55bf"
-DATABRICKS_TOKEN = "dapi547b1a6593c11731c34ca3f4c1b63f26"
+# DATABRICKS_SERVER_HOSTNAME = "dbc-092f61e4-3cd9.cloud.databricks.com"
+# DATABRICKS_HTTP_PATH = "/sql/1.0/warehouses/343faa8c987d55bf"
+# DATABRICKS_TOKEN = "dapi547b1a6593c11731c34ca3f4c1b63f26"
+# Load credentials from Streamlit secrets
+try:
+    DATABRICKS_SERVER_HOSTNAME = st.secrets["databricks"]["server_hostname"]
+    DATABRICKS_HTTP_PATH = st.secrets["databricks"]["http_path"]
+    DATABRICKS_TOKEN = st.secrets["databricks"]["token"]
+except Exception:
+    st.error("⚠️ Databricks credentials not found in secrets!")
+    st.info("Create .streamlit/secrets.toml with your Databricks credentials")
+    st.stop()
+
 # ============================================================
 
 INVENTORY_TABLE = "test.poc.inventory"
